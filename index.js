@@ -13,10 +13,12 @@ app.post("/webhook", (req, res) => {
 app.listen(port);
 
 const reply = (reply_token, msg) => {
-  let headers = {
-    "Content-Type": "application/json",
-    Authorization:
-      "Bearer {/D8XrAW3FkMhUhCjzg0DmverCN4M8ZnrgC+ZiMWw6Ib18WKyWM0TUlJ0XZVFiAs1a3bPXtXYmQWpexwgAy0LyqteuV51GvAQYZ+nE0Jo9b7BpQAc1LX67tWHGao0PEf6WmOsmXAgRDWTrGIsggEaiQdB04t89/1O/w1cDnyilFU=    }",
+  let axiosConfig = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization:
+        "Bearer {/D8XrAW3FkMhUhCjzg0DmverCN4M8ZnrgC+ZiMWw6Ib18WKyWM0TUlJ0XZVFiAs1a3bPXtXYmQWpexwgAy0LyqteuV51GvAQYZ+nE0Jo9b7BpQAc1LX67tWHGao0PEf6WmOsmXAgRDWTrGIsggEaiQdB04t89/1O/w1cDnyilFU=    }",
+    },
   };
 
   let body = JSON.stringify({
@@ -47,8 +49,6 @@ const reply = (reply_token, msg) => {
   }
 
   axios
-    .post("https://api.line.me/v2/bot/message/reply", body, {
-      headers: headers,
-    })
+    .post("https://api.line.me/v2/bot/message/reply", body, axiosConfig)
     .then((res) => console.log(res));
 };
