@@ -2,7 +2,6 @@ const express = require("express");
 const request = require("request");
 const app = express();
 const port = process.env.PORT || 4000;
-app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.post("/webhook", (req, res) => {
