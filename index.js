@@ -33,16 +33,18 @@ const reply = (reply_token, msg) => {
     ],
   });
   if (msg === "RandomDog") {
-    let body = JSON.stringify({
+    let imgRef = "";
+    axios
+      .get("https://dog.ceo/api/breeds/image/random")
+      .then((res) => (imgRef = res.messages));
+
+    body = JSON.stringify({
       replyToken: reply_token,
       messages: [
         {
           type: "image",
-          text: "Hello",
-        },
-        {
-          type: "text",
-          text: "How are you?",
+          originalContentUrl: imgRef,
+          previewImageUrl: imgRef,
         },
       ],
     });
