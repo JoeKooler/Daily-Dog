@@ -5,6 +5,7 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.17.1",
-    "heroku": "^7.44.0"
+    "heroku": "^7.44.0",
+    "request": "^2.88.2"
   }
 }
