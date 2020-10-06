@@ -24,11 +24,7 @@ const reply = (reply_token, msg) => {
     messages: [
       {
         type: "text",
-        text: "Hello",
-      },
-      {
-        type: "text",
-        text: "How are you?",
+        text: msg,
       },
     ],
   });
