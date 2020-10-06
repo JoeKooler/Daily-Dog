@@ -1,17 +1,15 @@
 const express = require("express");
-const axios = require("axios");
 const app = express();
-const port = process.env.PORT || 4000;
-app.use(express.json());
+const port = 3000;
+const axios = require("axios");
 
-app.post("/webhook", (req, res) => {
-  let reply_token = req.body.events[0].replyToken;
-  let msg = req.body.events[0].message.text;
-
-  reply(reply_token, msg);
-  res.sendStatus(200);
+app.get("/", async (req, res) => {
+  let imgRef = await axios
+    .get("https://dog.ceo/api/breeds/image/random")
+    .then((res) => {
+      console.log(res.data);
+      return res.data.message;
+    });
+  res.send(imgRef);
 });
-
-app.listen(port);
-
-const reply = (reply_token, msg) => {};
+app.listen(port, () => console.log(`Example app listening on port port!`));

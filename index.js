@@ -13,7 +13,7 @@ app.post("/webhook", (req, res) => {
 
 app.listen(port);
 
-const reply = (reply_token, msg) => {
+const reply = async (reply_token, msg) => {
   let axiosConfig = {
     headers: {
       "Content-Type": "application/json",
@@ -32,11 +32,12 @@ const reply = (reply_token, msg) => {
     ],
   });
   if (msg === "RandomDog") {
-    let imgRef = "";
-    axios
+    let imgRef = await axios
       .get("https://dog.ceo/api/breeds/image/random")
-      .then((res) => (imgRef = res.messages));
-
+      .then((res) => {
+        console.log(res.data);
+        return res.data.message;
+      });
     body = JSON.stringify({
       replyToken: reply_token,
       messages: [
