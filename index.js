@@ -46,8 +46,9 @@ const reply = (reply_token, msg) => {
         },
       ],
     });
+    console.log("Got Dog " + imgRef);
   }
-
+  console.log("Fine until last post");
   axios
     .post("https://api.line.me/v2/bot/message/reply", body, axiosConfig)
     .then((res) => console.log(res));
