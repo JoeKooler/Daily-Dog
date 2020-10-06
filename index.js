@@ -46,7 +46,9 @@ const reply = (reply_token, msg) => {
     });
   }
 
-  axios.post("https://api.line.me/v2/bot/message/reply", body, {
-    headers: headers,
-  });
+  axios
+    .post("https://api.line.me/v2/bot/message/reply", body, {
+      headers: headers,
+    })
+    .then((res) => console.log(res));
 };
