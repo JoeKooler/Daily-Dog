@@ -17,8 +17,7 @@ const reply = async (reply_token, msg) => {
   let axiosConfig = {
     headers: {
       "Content-Type": "application/json",
-      Authorization:
-        "Bearer {/D8XrAW3FkMhUhCjzg0DmverCN4M8ZnrgC+ZiMWw6Ib18WKyWM0TUlJ0XZVFiAs1a3bPXtXYmQWpexwgAy0LyqteuV51GvAQYZ+nE0Jo9b7BpQAc1LX67tWHGao0PEf6WmOsmXAgRDWTrGIsggEaiQdB04t89/1O/w1cDnyilFU=    }",
+      Authorization: process.env.AUTH,
     },
   };
 
